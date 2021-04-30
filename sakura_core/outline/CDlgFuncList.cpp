@@ -57,6 +57,8 @@
 #include "config/app_constants.h"
 #include "String_define.h"
 
+#include "debug/CRunningTimer.h"
+
 // 画面ドッキング用の定義	// 2010.06.05 ryoji
 #define DEFINE_SYNCCOLOR
 #define DOCK_SPLITTER_WIDTH		DpiScaleX(5)
@@ -417,6 +419,8 @@ void CDlgFuncList::ChangeView( LPARAM pcEditView )
 /*! ダイアログデータの設定 */
 void CDlgFuncList::SetData()
 {
+CRunningTimer t;
+
 	HWND			hwndList;
 	HWND			hwndTree;
 	hwndList = GetItemHwnd( IDC_LIST_FL );
@@ -430,6 +434,7 @@ void CDlgFuncList::SetData()
 	::ShowWindow( hwndTree, SW_HIDE );
 	ListView_DeleteAllItems( hwndList );
 	TreeView_DeleteAllItems( hwndTree );
+t.WriteTrace("DeleteAllItems");
 	::ShowWindow( GetItemHwnd(IDC_BUTTON_SETTING), SW_HIDE );
 
 	SetDocLineFuncList();
@@ -673,6 +678,7 @@ void CDlgFuncList::SetData()
 		dwExStyle |= LVS_EX_FULLROWSELECT;
 		ListView_SetExtendedListViewStyle( hwndList, dwExStyle );
 	}
+t.WriteTrace("SetTree");
 
 	// 選択状態更新
 	int nFuncInfoIndex = -1;
@@ -745,6 +751,7 @@ void CDlgFuncList::SetData()
 		::ShowWindow( GetItemHwnd( IDC_STATIC_nSortType ), SW_SHOW );
 		// 2002.11.10 Moca 追加 ソートする
 		SortTree(GetItemHwnd( IDC_TREE_FL),TVI_ROOT);
+t.WriteTrace("SortTree");
 	}else if( m_nListType == OUTLINE_FILETREE ){
 		::ShowWindow( GetItemHwnd(IDC_COMBO_nSortType), SW_HIDE );
 		::ShowWindow( GetItemHwnd(IDC_STATIC_nSortType), SW_HIDE );

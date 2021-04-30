@@ -24,7 +24,7 @@
 
 #include "util/string_ex.h"
 
-#if defined(_DEBUG) || defined(USE_RELPRINT)
+#if 1//defined(_DEBUG) || defined(USE_RELPRINT)
 
 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- //
 //                   メッセージ出力：実装                      //
