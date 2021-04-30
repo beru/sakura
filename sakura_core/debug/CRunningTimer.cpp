@@ -21,7 +21,7 @@
 #include "_main/global.h"
 #include "debug/Debug2.h"
 
-#ifdef _DEBUG
+#if 1//def _DEBUG
 
 #pragma comment(lib, "winmm.lib")
 
