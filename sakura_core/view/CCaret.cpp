@@ -294,7 +294,7 @@ CLayoutInt CCaret::MoveCursor(
 	}
 	//	To Here 2007.07.28 じゅうじ
 	if( bScroll ){
-		if (abs((Int)nScrollRowNum) < 10) {
+		if (0 && abs((Int)nScrollRowNum) < 10) {
 			struct ScrollRowRecord {
 				Int nScrollRowNum;
 				DWORD dwTime;

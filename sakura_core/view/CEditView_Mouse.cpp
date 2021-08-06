@@ -1234,7 +1234,12 @@ void CEditView::OnMOUSEMOVE( WPARAM fwKeys, int xPos_, int yPos_ )
 			} else {
 				// (矩形選択でも単語選択でもない)通常選択時は特別なことをしない。
 			}
-
+			static DWORD s_dwPrevTime;
+			DWORD dwCurrTime = GetTickCount();
+			if (dwCurrTime - s_dwPrevTime <= 1000/60) {
+				return;
+			}
+			s_dwPrevTime = dwCurrTime;
 			/* 現在のカーソル位置によって選択範囲を変更 */
 			GetSelectionInfo().ChangeSelectAreaByCurrentCursor( ptSelectCursor );
 			GetCaret().MoveCursor( ptNewCursor, true, 1000 );
