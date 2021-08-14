@@ -312,6 +312,9 @@ CLayoutInt CCaret::MoveCursor(
 					++nRecs;
 				}
 			}
+			if (abs(nScrollRowsPerTiming) >= 1) {
+				nScrollRowNum = 0;
+			}else
 			if (abs(nScrollRowsPerTiming) >= 8) {
 				nScrollRowNum = std::min(nScrollRowNum, (CLayoutInt)+1);
 				nScrollRowNum = std::max(nScrollRowNum, (CLayoutInt)-1);
